@@ -43,22 +43,22 @@ test.beforeEach(async ({ page, homePage   }) => {
 
 });
 
-test('Search for valid product and add in the basket', async ({ homePage, navigationPage, searchResultsPage }) => {
+test('Browser Store using given name options - New In', async ({ homePage, navigationPage }) => {
     
-    await homePage.navigateToHome();
-    await navigationPage.searchForProduct("shirt")
-    await searchResultsPage.checkForProductResults()
-    await searchResultsPage.clickFirstResult()
-    await searchResultsPage.addToBasket()
-
+    // await homePage.navigateToHome();
+    await navigationPage.goToMenu("New In", "Shop All")
 
 });
 
-test.skip('Negative Test - Search for invalid product ', async ({ homePage, navigationPage, searchResultsPage }) => {
-    await homePage.navigateToHome();
-    await navigationPage.searchForProduct("noresults")
-    await searchResultsPage.checkForNoResults()
+test('Browser Store using given name options - Shoes', async ({ homePage, navigationPage }) => {
+    // await homePage.navigateToHome();
+    await navigationPage.goToMenu("Shoes", "Boots")
 
+});
+
+test('Browser Store using given name options - Home & Garden', async ({ homePage, navigationPage }) => {
+    // await homePage.navigateToHome();
+    await navigationPage.goToMenu("Home & Garden", "Pets")
 
 });
 

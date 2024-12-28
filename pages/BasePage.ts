@@ -83,4 +83,15 @@ async isElementVisible(selector: string): Promise<void> {
 async isElementNotVisible(selector: string): Promise<void> {
     await expect(this.page.locator(selector)).toHaveCount(0);
     }
+
+/**
+ * Hovers over an element identified by the locator.
+ * @param {Page} page - The Playwright page instance.
+ * @param {string} name - The text to replace <Name> in the locator.
+ */
+
+
+
 }
+
+
