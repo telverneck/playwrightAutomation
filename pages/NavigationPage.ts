@@ -24,7 +24,7 @@ async goToMenu(menu: string, suboption: string) {
         await element.hover();
         await this.clickElement(option);
     } catch (error) {
-        console.error(`Error hovering over element with text: ${menu}`, error);
+        console.error(`Error hovering over element with text: ${menu} and ${suboption}`, error);
     }
 }
 
