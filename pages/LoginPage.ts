@@ -14,7 +14,7 @@ export class LoginPage extends BasePage {
     private yopmailConsentButton = "button[aria-label='Consent']" 
     private yopmailCodeText = "h2[style='margin: 0']" 
     private yopmailGoButton = "#refreshbut button" 
-    private errorMessage = "alert__text_error" 
+    private errorMessage = ".alert__text_error" 
 
 
 

@@ -6,11 +6,11 @@ This framework leverages Playwright for end-to-end testing, providing a robust, 
 
 ## Table of Contents
 
-- [Setup and Installation](#Setup and Installation)
+- [Setup and Installation](#Setup_and_Installation)
 - [Dependencies](#Dependencies)
-- [Test Execution](#Test Execution)
-- [Viewing Reports](#Viewing Reports)
-- [Additional Information](#Additional Information)
+- [Test Execution](#Test_Execution)
+- [Viewing Reports](#Viewing_Reports)
+- [Additional Information](#Additional_Information)
 
 # Setup and Installation
 

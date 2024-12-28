@@ -5,10 +5,10 @@ export default defineConfig({
   name: 'Cocus Test',
   testDir: './tests',
   timeout: 30000,
-  fullyParallel: true,
+  fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 1,
   reporter: 'html',
   outputDir: './test-results',
   use: {
