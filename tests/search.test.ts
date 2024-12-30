@@ -8,7 +8,7 @@ import { clickIfVisible , checkCookies} from '../utils/helpers';
 
 const testdata= JSON.parse(JSON.stringify(require("../testData.json")))
 
-
+// Set pages as public to instantiate only once
 const test = baseTest.extend<{
     loginPage: LoginPage;
     homePage: HomePage;
@@ -45,7 +45,7 @@ test.beforeEach(async ({ page, homePage   }) => {
 
 test('Search for valid product and add in the basket', async ({ homePage, navigationPage, searchResultsPage }) => {
     
-    await homePage.navigateToHome();
+    // await homePage.navigateToHome();
     await navigationPage.searchForProduct("shirt")
     await searchResultsPage.checkForProductResults()
     await searchResultsPage.clickFirstResult()
@@ -54,8 +54,8 @@ test('Search for valid product and add in the basket', async ({ homePage, naviga
 
 });
 
-test.skip('Negative Test - Search for invalid product ', async ({ homePage, navigationPage, searchResultsPage }) => {
-    await homePage.navigateToHome();
+test('Negative Test - Search for invalid product ', async ({ homePage, navigationPage, searchResultsPage }) => {
+    // await homePage.navigateToHome();
     await navigationPage.searchForProduct("noresults")
     await searchResultsPage.checkForNoResults()
 

@@ -7,7 +7,7 @@ export class SearchResultsPage extends BasePage {
     private productList = '.product__items.js-product-list-items';
     private firstItem = '.product__item:nth-child(1)';
     private productDetail = '#productTitle'; 
-    private sizeSelector = 'select#standard_NP484WM_optionSize'; 
+    private sizeSelector = 'select[id*=optionSize]'; 
     private addToBagButton = '.btn-add-to-bag'; 
     private continueToCheckoutButton = "//a[contains(text(),'Continue to Checkout')]"
     private checkoutPageTitleLabel = "#checkoutPageTitleBar"
