@@ -45,29 +45,39 @@ async checkErrorMessage() {
     return await this.page.isVisible(this.errorMessage); 
     }
 
-async retrieveOneTimeCode(){
-
-    const confirmTextLocator = this.page.locator(this.sendCodeButton);
-    if (await confirmTextLocator.isVisible()) {
-        console.log('Text "Confirm it\'s you" is present on the page.');
-        await this.clickElement(this.sendCodeButton)
-        await this.page.goto('https://yopmail.com/');
-        await this.clickElement(this.yopmailConsentButton);
-
-        await this.page.getByPlaceholder('Enter your inbox here').fill('test.cocus.telmo@yopmail.com');
-        await this.clickElement(this.yopmailGoButton)
-        // Access the iframe where the target element is located
-        const iframe = this.page.frameLocator('iframe');
-
-        // Get the text content from the specific locator inside the iframe
-        const textFromIframe = await iframe.locator(this.yopmailCodeText).textContent();
-        const retrievedText = textFromIframe?.trim(); // Trim to remove unnecessary whitespace
-        console.log(`Retrieved text: ${retrievedText}`);
-        await this.page.getByLabel('Security code This code').fill(retrievedText);
-        await this.page.getByRole('button', { name: 'Continue' }).click();
-        
-        // Store the retrieved text in a variable
+    async retrieveOneTimeCode() {
+        const confirmTextLocator = this.page.locator(this.sendCodeButton);
+    
+        if (await confirmTextLocator.isVisible()) {
+            console.log('Text "Confirm it\'s you" is present on the page.');
+            await this.clickElement(this.sendCodeButton);
+    
+            // Open a new tab
+            const context = this.page.context(); // Get the browser context
+            const newTab = await context.newPage(); // Open a new tab
+    
+            // Perform actions in the new tab
+            await newTab.goto('https://yopmail.com/');
+            await newTab.click(this.yopmailConsentButton);
+            await newTab.getByPlaceholder('Enter your inbox here').fill('test.cocus.telmo@yopmail.com');
+            await newTab.click(this.yopmailGoButton);
+    
+            // Access the iframe in the new tab
+            const iframe = newTab.frameLocator('#ifmail');
+            const textFromIframe = await iframe.locator(this.yopmailCodeText).textContent();
+            const retrievedText = textFromIframe?.trim(); // Trim to remove unnecessary whitespace
+            console.log(`Retrieved text: ${retrievedText}`);
+    
+            // Close the new tab
+            await newTab.close();
+    
+            // Switch back to the original tab
+            await this.page.bringToFront();
+    
+            // Perform actions in the original tab
+            await this.page.getByLabel('Security code This code').fill(retrievedText);
+            await this.page.getByRole('button', { name: 'Continue' }).click();
         }
-
     }
+    
 }

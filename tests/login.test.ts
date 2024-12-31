@@ -41,22 +41,18 @@ test.beforeEach(async ({ page, homePage,  loginPage  }) => {
     await loginPage.navigateToLogin();
 });
 
-test.afterEach(async ({ page, loginPage   }) => {
-    await loginPage.logout();
-});
+// test.afterEach(async ({ page, loginPage   }) => {
+//     await loginPage.logout();
+// });
 
 test('User can login/logout successfully with a previsouly registered account ', async ({ loginPage, homePage, navigationPage, searchResultsPage  }) => {
     
     // await homePage.navigateToHome();
     await loginPage.navigateToLogin();
     await loginPage.login(testdata.login, testdata.password);
-    await navigationPage.searchForProduct("shirt")
-    await searchResultsPage.checkForProductResults()
-    
+    await loginPage.logout();
+
     // const success = await loginPage.checkLoginPage();
-
-
-
     // expect(success).toBe(true);
 });
 

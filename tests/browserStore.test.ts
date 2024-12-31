@@ -56,9 +56,9 @@ test('Browser Store using given name options - Shoes', async ({ homePage, naviga
 
 });
 
-test('Browser Store using given name options - Home & Garden', async ({ homePage, navigationPage }) => {
+test('Browser Store using given name options - Outlet', async ({ homePage, navigationPage }) => {
     // await homePage.navigateToHome();
-    await navigationPage.goToMenu("Home & Garden", "Pets")
+    await navigationPage.goToMenu("Outlet", "Outlet Toys")
 
 });
 
