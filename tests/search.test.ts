@@ -54,6 +54,17 @@ test('Search for valid product and add in the basket', async ({ homePage, naviga
 
 });
 
+test('BUG!!! Search for // will cause an error page', async ({ homePage, navigationPage, searchResultsPage }) => {
+    
+    // await homePage.navigateToHome();
+    await navigationPage.searchForProduct("//")
+    await searchResultsPage.checkForProductResults()
+    await searchResultsPage.clickFirstResult()
+    await searchResultsPage.addToBasket()
+
+
+});
+
 test('Negative Test - Search for invalid product ', async ({ homePage, navigationPage, searchResultsPage }) => {
     // await homePage.navigateToHome();
     await navigationPage.searchForProduct("noresults")
