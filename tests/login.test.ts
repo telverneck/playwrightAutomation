@@ -1,4 +1,4 @@
-import { test as baseTest } from '@playwright/test';
+import { expect, test as baseTest } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { NavigationPage } from '../pages/NavigationPage';
@@ -45,15 +45,15 @@ test.beforeEach(async ({ page, homePage,  loginPage  }) => {
 //     await loginPage.logout();
 // });
 
-test('User can login/logout successfully with a previsouly registered account ', async ({ loginPage, homePage, navigationPage, searchResultsPage  }) => {
+test.only('User can login/logout successfully with a previsouly registered account ', async ({ loginPage, homePage, navigationPage, searchResultsPage  }) => {
     
     // await homePage.navigateToHome();
     await loginPage.navigateToLogin();
     await loginPage.login(testdata.login, testdata.password);
     await loginPage.logout();
 
-    // const success = await loginPage.checkLoginPage();
-    // expect(success).toBe(true);
+    const success = await homePage.checkHomePage();
+    expect(success).toBe(true);
 });
 
 test('Invalid login attempt', async ({ loginPage, homePage }) => {
