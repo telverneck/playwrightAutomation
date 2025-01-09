@@ -45,7 +45,7 @@ test.beforeEach(async ({ page, homePage,  loginPage  }) => {
 //     await loginPage.logout();
 // });
 
-test.only('User can login/logout successfully with a previsouly registered account ', async ({ loginPage, homePage, navigationPage, searchResultsPage  }) => {
+test('User can login/logout successfully with a previsouly registered account ', async ({ loginPage, homePage, navigationPage, searchResultsPage  }) => {
     
     // await homePage.navigateToHome();
     await loginPage.navigateToLogin();
